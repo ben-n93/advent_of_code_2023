@@ -32,9 +32,9 @@ FROM
 	(
 	SELECT game,
 	MAX(blue_cubes) AS max_blue,
-	MAX(red_cubes) as max_red,
-	MAX(green_cubes) as max_green
-	from day_2_puzzle dp 
-	group by 1 
+	MAX(red_cubes) AS max_red,
+	MAX(green_cubes) AS max_green
+	FROM day_2_puzzle dp 
+	GROUP BY 1 
 	)
 )
