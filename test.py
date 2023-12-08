@@ -1,8 +1,5 @@
 import re
 
-with open("./data/day_3_puzzle.txt") as f:
-    puzzle = f.readlines()
+test = {}
 
-numbers = []
-for line in puzzle:
-    print(len(line))
+test.append("ben")
