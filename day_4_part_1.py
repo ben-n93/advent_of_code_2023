@@ -16,5 +16,4 @@ with open("./data/day_4_puzzle.txt") as f:
                 else:
                     point = point * 2
             points.append(point)
-    answer = sum(points)
-    print(answer)
+    print(sum(points))
