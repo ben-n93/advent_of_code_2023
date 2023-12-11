@@ -5,34 +5,21 @@ my_numbers = []
 winning_numbers = []
 with open("./data/day_4_puzzle.txt") as f:
     puzzle = f.readlines()
+    points = []
     for line in puzzle:
-        line_my_numbers = re.search("(?<=\|).*", line)
-        line_my_numbers = line_my_numbers.group().split()
-        my_numbers.append(line_my_numbers)
         line_winning_numbers = re.search("(?<=:).*(?=\|)", line)
         line_winning_numbers = line_winning_numbers.group().split()
-        winning_numbers.append(line_winning_numbers)
-
-# Identifying winning numbers.
-matches = []
-for game_number in range(0, 220):
-    matched_numbers = []
-    for my_number in my_numbers[game_number]:
-        if my_number in winning_numbers[game_number]:
-            matched_numbers.append(int(my_number))
-    matches.append(matched_numbers)
-
-# Calculating the puzzle answer.
-points = []
-for game_number, game in enumerate(matches):
-    length = len(matches[game_number]) - 1
-    for index, number in enumerate(matches[game_number]):
-        if index == 0:
-            point = 1
-        else:
-            point = point * 2
-        if int(index) == length:
+        line_my_numbers = re.search("(?<=\|).*", line)
+        line_my_numbers = line_my_numbers.group().split()
+        winning_numbers = [
+            number for number in line_winning_numbers if number in line_my_numbers
+        ]
+        if winning_numbers:
+            for index, number in enumerate(winning_numbers):
+                if index == 0:
+                    point = 1
+                else:
+                    point = point * 2
             points.append(point)
-
-answer = sum(points)
-print(answer)
+    answer = sum(points)
+    print(answer)
