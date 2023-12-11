@@ -44,24 +44,17 @@ part_numbers = []
 for item in numbers:
     for number, positions in item.items():
         for position in positions:
-            number_left = position - 1
-            number_right = position + 1
-            number_behind = position - LINE_LENGTH
-            number_ahead = position + LINE_LENGTH
-            number_behind_left = number_behind - 1
-            number_behind_right = number_behind + 1
-            number_ahead_left = number_ahead - 1
-            number_ahead_right = number_ahead + 1
-            if (
-                number_behind in symbols
-                or number_left in symbols
-                or number_right in symbols
-                or number_ahead in symbols
-                or number_ahead_left in symbols
-                or number_ahead_right in symbols
-                or number_behind_left in symbols
-                or number_behind_right in symbols
-            ):
+            relevant_numbers = {
+                position - 1,
+                position + 1,
+                position - LINE_LENGTH,
+                position + LINE_LENGTH,
+                position - LINE_LENGTH - 1,
+                position - LINE_LENGTH + 1,
+                position + LINE_LENGTH - 1,
+                position + LINE_LENGTH + 1,
+            }
+            if relevant_numbers.intersection(symbols):
                 part_numbers.append(int(number))
                 break
 
