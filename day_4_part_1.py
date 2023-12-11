@@ -1,8 +1,5 @@
 import re
 
-# Parsing puzzle.
-my_numbers = []
-winning_numbers = []
 with open("./data/day_4_puzzle.txt") as f:
     puzzle = f.readlines()
     points = []
