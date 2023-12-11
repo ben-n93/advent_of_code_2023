@@ -40,4 +40,4 @@ for card in cards.keys():
     get_cards(int(card))
     scratch_cards.append(int(card))
 
-print(f"Part 1 answer: {len(scratch_cards)}")
+print(f"Part 2 answer: {len(scratch_cards)}")
